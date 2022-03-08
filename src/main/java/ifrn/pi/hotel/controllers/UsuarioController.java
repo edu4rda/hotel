@@ -1,10 +1,12 @@
 package ifrn.pi.hotel.controllers;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -12,33 +14,47 @@ import org.springframework.web.servlet.ModelAndView;
 import ifrn.pi.hotel.models.Usuario;
 import ifrn.pi.hotel.repositories.UserRepository;
 
-
 @Controller
 public class UsuarioController {
 
 	@Autowired
 	private UserRepository ur;
-	
-	@RequestMapping("/hotel/formUsuario")
+
+	@RequestMapping("/user/formUsuario")
 	public String form() {
 		return "usuario/formUsuario";
 	}
-	@PostMapping("/hotel/user")
+
+	@PostMapping("/user/us")
 	public String adicionar(Usuario usuario) {
-		
+
 		System.out.println(usuario);
 		ur.save(usuario);
 		return "usuario/usuario-cadastrado";
 	}
-	@GetMapping("/hotel/user")
+
+	@GetMapping("/user/us")
 	public ModelAndView listar() {
-		
+
 		List<Usuario> users = ur.findAll();
 		ModelAndView mv = new ModelAndView("usuario/listaUsuario");
 		mv.addObject("users", users);
 		return mv;
 	}
-	
-	
-}
 
+	@GetMapping("/user/{id}")
+	public ModelAndView detalhar(@PathVariable Long id) {
+		ModelAndView md = new ModelAndView();
+		Optional<Usuario> opt = ur.findById(id);
+		if (opt.isEmpty()) {
+			md.setViewName("redirect:/listaUsuario");
+			return md;
+
+		}
+		md.setViewName("usuario/detalhesUsuario");
+		Usuario usuario = opt.get();
+		md.addObject("usuario", usuario);
+
+		return md;
+	}
+}
