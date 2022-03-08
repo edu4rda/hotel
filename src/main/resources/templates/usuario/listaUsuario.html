@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<!-- Compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<title>USUARIOS</title>
+</head>
+<body>
+	<div th:replace="~{menu :: menu}"></div>
+	<div class="container">
+		<h1>Lista de Usuarios</h1>
+
+		<table>
+			<thead>
+				<tr>
+					<th>Id:</th>
+					<th>Nome:</th>
+					<th>CPF:</th>
+					<th>Email:</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="u : ${users}">
+					<td th:text="${u.id}">1</td>
+					<td th:text="${u.nome}">3</td>
+					<td th:text="${u.cpf}">4</td>
+					<td th:text="${u.email}">Master</td>
+				</tr>
+
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>
