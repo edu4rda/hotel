@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<!-- Compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<title>QUARTO</title>
+</head>
+<body>
+	<h1>Reservar quarto</h1>
+
+	<div th:replace="~{menu :: menu}"></div>
+	<div class="container">
+		<form action="/hotel/room" method="post">
+
+			<div>
+				<label>Numero do quarto:</label> <input type="text" name="numero">
+			</div>
+			<div>
+				<label>Andar:</label> <input type="text" name="andar">
+			</div>
+			<div>
+				<label>Categoria:</label> <input type="text" name="categoria">
+			</div>
+			<div>
+				<label>Descrição:</label> <input type="text" name="descricao">
+			</div>
+			<div>
+				<button class="waves-effect waves-light btn"><i class="material-icons left">cloud</i>Reservar</button>
+				<button class="waves-effect waves-light btn"><i class="material-icons left">close</i>Limpar</button>
+			</div>
+		</form>
+	</div>
+</body>
+</html>

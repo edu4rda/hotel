@@ -12,7 +12,7 @@ public class Usuario {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id; 
 	private String nome;
-	private String CPF;
+	private String cpf;
 	private String email;
 	
 	public Long getId() {
@@ -31,12 +31,12 @@ public class Usuario {
 		this.nome = nome;
 	}
 
-	public String getCPF() {
-		return CPF;
+	public String getCpf() {
+		return cpf;
 	}
 
-	public void setCPF(String cPF) {
-		CPF = cPF;
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
 	}
 
 	public String getEmail() {
