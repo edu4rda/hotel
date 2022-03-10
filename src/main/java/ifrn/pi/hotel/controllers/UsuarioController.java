@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+
 import ifrn.pi.hotel.models.Usuario;
 import ifrn.pi.hotel.repositories.UserRepository;
 
@@ -56,5 +57,14 @@ public class UsuarioController {
 		md.addObject("usuario", usuario);
 
 		return md;
+	}
+	@PostMapping("/user/{id}")
+	public String salvarReserva(@PathVariable Long id, Usuario usuario) {
+		
+		System.out.println("Id da reserva: " + id);
+		System.out.println(usuario);
+		
+		return"redirect:/user/{id}";
+		
 	}
 }
