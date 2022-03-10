@@ -33,7 +33,7 @@ public class ReservaController {
 		return "reserva-adicionada";
 	}
 
-	@GetMapping("/hotel")
+	@GetMapping("/hotel/listaReserva")
 	public ModelAndView listar() {
 
 		List<Reserva> reservas = rr.findAll();
