@@ -13,13 +13,13 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 import ifrn.pi.hotel.models.Usuario;
-import ifrn.pi.hotel.repositories.UserRepository;
+import ifrn.pi.hotel.repositories.UsuarioRepository;
 
 @Controller
 public class UsuarioController {
 
 	@Autowired
-	private UserRepository ur;
+	private UsuarioRepository ur;
 
 	@RequestMapping("/user/formUsuario")
 	public String form() {
