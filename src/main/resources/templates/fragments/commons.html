@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity">
+<head>
+<meta charset="UTF-8">
+<title>Security</title>
+</head>
+<body>
+
+	<div id="cabecalho" class="page-header" th:fragment="cabecalho">
+		<header>
+			<div class="container">
+			</div>
+		</header>
+	</div>
+
+	<div id="menu" th:fragment="menu">
+		<nav>
+			<div class="container">
+				<ul>
+					<li><a href="#" th:href="@{/}">Início</a></li>
+					<li sec:authorize="hasRole('ROLE_FUNCIONARIO')"><a href="#" th:href="@{/user/us}">Cadastros</a></li>
+					<li sec:authorize="hasRole('ROLE_FUNCIONARIO')"><a href="#" th:href="@{/hotel/listaReserva}">Reservas</a></li>
+					<li sec:authorize="hasRole('ROLE_FUNCIONARIO')"><a href="#" th:href="@{/quarto/room}">Quartos</a></li>
+					<li sec:authorize="hasRole('ROLE_USUARIO')"><a href="#" th:href="@{/quarto/room}">Quartos</a></li>
+					<li sec:authorize="!isAuthenticated()"><a href="#" th:href="@{/login}">Login</a></li> 
+					
+				</ul>
+			</div>
+		</nav>
+	</div>
+
+
+	<div id="rodape" th:fragment="rodape">
+		<footer class="bottom">
+			<!-- 			<div class="footer-copyright"> -->
+			<div class="container">
+								<p>Reservas.com &copy;</p>
+			</div>
+		</footer>
+	</div>
+
+</body>
+</html>

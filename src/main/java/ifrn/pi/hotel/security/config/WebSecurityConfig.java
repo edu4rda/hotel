@@ -16,16 +16,20 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 		http
 			.authorizeRequests()
 				.antMatchers("/").permitAll()
-				.antMatchers("/quarto/room").hasRole("FUNCIONARIO")
+				.antMatchers("/user/formUsuario").permitAll()
+				.antMatchers("/user/us").permitAll()
+				.antMatchers("/quarto/room").hasAnyRole("FUNCIONARIO", "USUARIO")
 				.antMatchers("/quarto/formQuarto").hasRole("FUNCIONARIO")
 				.antMatchers("/quarto/{id}").hasRole("FUNCIONARIO")
 				.antMatchers("/user/us").hasRole("FUNCIONARIO")
+				.antMatchers("/hotel/listaReserva").hasRole("FUNCIONARIO")
 				.antMatchers("/user/{id}").hasRole("FUNCIONARIO")
-				.antMatchers("/user/formUsuario").hasRole("USUARIO")
 				.antMatchers("/user/{id}").hasRole("USUARIO")
+				.antMatchers("/quarto/room").hasRole("USUARIO")
 				.anyRequest().authenticated()
 				.and()
 				.formLogin()
+				.loginPage("/login")
 				.permitAll();
 	}
 

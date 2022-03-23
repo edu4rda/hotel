@@ -8,7 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
@@ -25,14 +24,11 @@ public class Usuario implements UserDetails {
 	private String cpf;
 	private String email;
 	private String senha;
-	
+
 	@ManyToMany
 	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<Papel> papeis;
-	
-	@ManyToOne
-	private Reserva reserva; 
-	
+
 	public String getSenha() {
 		return senha;
 	}
@@ -72,7 +68,7 @@ public class Usuario implements UserDetails {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
+
 	public List<Papel> getPapeis() {
 		return papeis;
 	}
@@ -81,17 +77,10 @@ public class Usuario implements UserDetails {
 		this.papeis = papeis;
 	}
 
-	public Reserva getReserva() {
-		return reserva;
-	}
-
-	public void setReserva(Reserva reserva) {
-		this.reserva = reserva;
-	}
-
 	@Override
 	public String toString() {
-		return "Reserva [id=" + id + ", nome" + nome + ", CPF" + cpf + ", email" + email + "]";
+		return "Usuario [id=" + id + ", nome=" + nome + ", cpf=" + cpf + ", email=" + email + ", senha=" + senha
+				+ ", papeis=" + papeis + "]";
 	}
 
 	@Override

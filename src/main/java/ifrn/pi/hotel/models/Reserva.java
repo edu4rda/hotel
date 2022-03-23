@@ -4,7 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Reserva {
@@ -16,10 +16,9 @@ public class Reserva {
 	private String qtdPessoas;
 	private String qtdQuartos;
 	private String qtdDias;
-	
-	@OneToOne
+	@ManyToOne
 	private Usuario usuario;
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -79,6 +78,15 @@ public class Reserva {
 	public void setPagamento(String pagamento) {
 		this.pagamento = pagamento;
 	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
 	@Override
 	public String toString() {
 		return "Reserva [id=" + id + ", nome" + nome + ", qtdPessoas" + qtdPessoas + ", qtdQuartos" + qtdQuartos + "]";
